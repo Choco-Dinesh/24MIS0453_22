@@ -1,27 +1,26 @@
 import java.math.BigInteger;
-import java.util.Scanner;
+import java.util.Random;
 
-public class PrimeChecker {
+public class RandomPrimeChecker {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        // Built-in utility to generate random numbers
+        Random random = new Random();
         
-        System.out.print("Enter a number to check: ");
-        String input = scanner.next();
+        // Generate a random positive integer between 1 and 1000
+        int randomNumber = random.nextInt(1000) + 1;
         
-        // Convert the input string into a BigInteger object
-        BigInteger number = new BigInteger(input);
+        // Convert to BigInteger to use the built-in prime check function
+        BigInteger number = BigInteger.valueOf(randomNumber);
         
-        // Use the built-in function to check if it's prime
-        // Passing 100 ensures a 99.9999% accuracy rate
+        // Check if the random number is prime (100 certainty = 99.9999% accurate)
         boolean isPrime = number.isProbablePrime(100);
         
+        // Output the result
+        System.out.println("Generated Random Number: " + number);
         if (isPrime) {
             System.out.println(number + " is a prime number.");
         } else {
             System.out.println(number + " is a composite number.");
         }
-        
-        scanner.close();
     }
 }
-
